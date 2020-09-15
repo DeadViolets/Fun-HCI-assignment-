@@ -155,7 +155,7 @@ b_falseInvert.onclick = function fFalseInvert() {
     p_invert.innerHTML = "Invert : nej";
 }
 
-b_trueInvert.onclick = function fFalseInvert() {
+b_trueInvert.onclick = function fTrueInvert() {
     invertColors = true;
     p_invert.innerHTML = "Invert: ja";
 }
