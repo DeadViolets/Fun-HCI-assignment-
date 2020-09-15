@@ -3,7 +3,8 @@ let speed = 3;
 let direction = 1;
 let hit = 0;
 let miss = 0;
-let movingBox = document.getElementById("testDiv");
+let movingBox = document.getElementById("movingDiv");
+let target = document.getElementById("targetDiv");
 let changeStartingSide = 0;
 let startingSide = 1;
 
@@ -17,7 +18,7 @@ const p_speed = document.getElementById("pSpeed");
 const b_decSpeed = document.getElementById("decreaseSpeed");
 const b_incSpeed = document.getElementById("increaseSpeed");
 const startingLeft = leftDiv.offsetLeft;
-const startingRight = rightDiv.offsetLeft + rightDiv.offsetWidth - movingBox.offsetWidth;
+const startingRight = startingLeft + leftDiv.offsetWidth - movingBox.offsetWidth;
 
 async function startExperiment() {
     experimentActive = true;
@@ -29,7 +30,7 @@ async function startExperiment() {
         while(true) {
             if(!experimentActive) break;
             xPos = movingBox.offsetLeft;
-            if(xPos + boxWidth > rightDiv.offsetLeft + rightDiv.offsetWidth || xPos < leftDiv.offsetLeft) {
+            if(xPos + boxWidth > startingRight + movingBox.offsetWidth || xPos < startingLeft) {
                 direction = -direction;
             }
             movingBox.style.left = (xPos + speed * direction) + 'px';
@@ -39,7 +40,7 @@ async function startExperiment() {
 }
 
 function checkTarget() {
-    if (movingBox.offsetLeft >= leftDiv.offsetLeft + leftDiv.offsetWidth && movingBox.offsetLeft + movingBox.offsetWidth <= rightDiv.offsetLeft) {
+    if (movingBox.offsetLeft >= target.offsetLeft && movingBox.offsetLeft + movingBox.offsetWidth <= target.offsetLeft + target.offsetWidth) {
         hit++;
         p_hit.innerHTML = "Hit: " + hit;
     } else {
