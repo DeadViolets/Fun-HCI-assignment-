@@ -51,6 +51,7 @@ async function startExperiment() {
 }
 
 function checkTarget() {
+    congratulations()
     if (movingBox.offsetLeft >= target.offsetLeft 
         && movingBox.offsetLeft + movingBox.offsetWidth <= target.offsetLeft + target.offsetWidth) {
         hit++;
@@ -182,4 +183,8 @@ function saveToCsv(){
 	link.setAttribute("download", "resultsVisual.csv");
 	document.body.appendChild(link);
 	link.click();
+}
+function congratulations() {
+    if (hit == 99)
+        window.open("https://www.youtube.com/watch?v=1Bix44C1EzY", '_blank')
 }
