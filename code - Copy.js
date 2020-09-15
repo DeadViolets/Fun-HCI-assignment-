@@ -13,8 +13,11 @@ const leftDiv = document.getElementById("leftDiv");
 const p_hit = document.getElementById("hit");
 const p_miss = document.getElementById("miss");
 const p_time = document.getElementById("time");
-const startingLeft = "750px";
-const startingRight = "1540px";
+const p_speed = document.getElementById("pSpeed");
+const b_decSpeed = document.getElementById("decreaseSpeed");
+const b_incSpeed = document.getElementById("increaseSpeed");
+const startingLeft = leftDiv.offsetLeft;
+const startingRight = rightDiv.offsetLeft + rightDiv.offsetWidth - movingBox.offsetWidth;
 
 async function startExperiment() {
     experimentActive = true;
@@ -90,4 +93,17 @@ function onKey(e) {
             // b
             // here you can extend... alert("pressed the b key"); break;
     }
+}
+
+b_decSpeed.onclick = function fIncSpeed() {
+    if(speed == 0) {
+        return;
+    }
+    speed--;
+    p_speed.innerHTML = "Speed: " + speed;
+}
+
+b_incSpeed.onclick = function fDecSpeed() {
+    speed++;
+    p_speed.innerHTML = "Speed: " + speed;
 }
