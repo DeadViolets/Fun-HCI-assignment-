@@ -124,6 +124,7 @@ function onKey(e) {
             // a
             if (experimentActive) {
                 stopExperiment();
+                saveToCsv();
             }
             break;
         case 66:
@@ -165,4 +166,20 @@ b_falseInvert.onclick = function fFalseInvert() {
 b_trueInvert.onclick = function fTrueInvert() {
     invertColors = true;
     p_invert.innerHTML = "Invert: ja";
+}
+
+function saveToCsv(){
+	var encodedUri, link;
+	let csvContent = "data:text/csv;charset=utf-8,Reaction times in ms (visual)\n";
+	scores.forEach(function (infoArray) {
+		let row = infoArray;
+        csvContent += row + "\r\n";
+    });
+	encodedUri = encodeURI(csvContent);
+	
+	link = document.createElement("a");
+	link.setAttribute("href", encodedUri);
+	link.setAttribute("download", "resultsVisual.csv");
+	document.body.appendChild(link);
+	link.click();
 }
