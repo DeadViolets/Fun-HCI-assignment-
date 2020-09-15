@@ -30,7 +30,7 @@ const startingRight = startingLeft + leftDiv.offsetWidth - movingBox.offsetWidth
 async function startExperiment() {
     experimentActive = true;
     changeStartingSideCount = newStartingSide();
-    invertColors = newInvert();
+    invertColorsCount = newInvert();
 
     if(movingBox) {
         let xPos = 0;
