@@ -59,8 +59,8 @@ function checkTarget() {
         miss++;
         p_miss.innerHTML = "Miss: " + miss;
     }
-    let delta = ((movingBox.offsetLeft - leftDiv.offsetLeft) + movingBox.offsetWidth / 2) - (leftDiv.offsetWidth / 2);
-    let delta2 = 1 - Math.abs(delta / (leftDiv.offsetWidth / 2));
+    let delta = ((movingBox.offsetLeft - target.offsetLeft) + movingBox.offsetWidth / 2) - (target.offsetWidth / 2);
+    let delta2 = Math.max(0, 1 - Math.abs(delta / (target.offsetWidth / 2)));
     scores.push(delta2);
     p_sd.innerHTML = "Last score: " + delta2;   
 
