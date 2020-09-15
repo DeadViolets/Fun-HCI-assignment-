@@ -11,6 +11,7 @@ let invertColors = false;
 let invertColorsCount = 0;
 let invertColorsCheck = 1;
 let startingSide = 1;
+let scores = new Array();
 
 const screenWidth = window.innerWidth;
 const leftDiv = document.getElementById("leftDiv");
@@ -20,6 +21,8 @@ const p_time = document.getElementById("time");
 const p_mean = document.getElementById("mean");
 const p_speed = document.getElementById("pSpeed");
 const p_invert = document.getElementById("pInvert");
+const p_sd = document.getElementById("sd");
+
 const b_decSpeed = document.getElementById("decreaseSpeed");
 const b_incSpeed = document.getElementById("increaseSpeed");
 const b_falseInvert = document.getElementById("falseInvert");
@@ -56,6 +59,10 @@ function checkTarget() {
         miss++;
         p_miss.innerHTML = "Miss: " + miss;
     }
+    let delta = ((movingBox.offsetLeft - leftDiv.offsetLeft) + movingBox.offsetWidth / 2) - (leftDiv.offsetWidth / 2);
+    let delta2 = 1 - Math.abs(delta / (leftDiv.offsetWidth / 2));
+    scores.push(delta2);
+    p_sd.innerHTML = "Last score: " + delta2;   
 
     if(changeStartingSide == true) {
         changeStartingSideCount--;
